@@ -1,18 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake & Ladders Deluxe</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%8D%3C/text%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake &amp; Ladders Deluxe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- ===================== HEADER / TITLE ===================== -->
+      <header class="app-header">
+        <h1 class="title">Snake &amp; Ladders <span>Deluxe</span></h1>
+        <p class="subtitle">A wooden fantasy board adventure</p>
+      </header>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+      <!-- ===================== MAIN GAME LAYOUT ===================== -->
+      <main class="game">
+        <!-- ----------- SIDEBAR : controls & status ----------- -->
+        <aside class="sidebar">
+          <!-- Current player indicator -->
+          <section class="panel turn-panel">
+            <span class="panel-label">Current Turn</span>
+            <div class="current-player">
+              <span class="player-dot" id="currentDot"></span>
+              <span class="current-name" id="currentName">Player 1</span>
+            </div>
+          </section>
 
-<body>
+          <!-- Player cards -->
+          <section class="panel">
+            <span class="panel-label">Players</span>
+            <div class="player-cards" id="playerCards"></div>
+          </section>
 
-    <canvas id="board"></canvas>
+          <!-- Dice area -->
+          <section class="panel dice-panel">
+            <span class="panel-label">Dice</span>
+            <div class="dice-stage">
+              <div class="dice" id="dice">
+                <div class="dice-face" id="diceFace"></div>
+              </div>
+            </div>
+            <div class="dice-info">
+              <span class="last-roll">Last roll: <strong id="lastRoll">—</strong></span>
+            </div>
+            <button class="btn btn-primary" id="rollBtn">Roll Dice</button>
+          </section>
 
-    <script src="script.js"></script>
+          <!-- Controls -->
+          <section class="panel">
+            <span class="panel-label">Controls</span>
+            <div class="control-row">
+              <button class="btn btn-ghost" id="restartBtn">Restart</button>
+              <button class="btn btn-ghost" id="soundBtn">Sound: On</button>
+            </div>
+          </section>
 
-</body>
+          <!-- Game log -->
+          <section class="panel">
+            <span class="panel-label">Game Log</span>
+            <div class="log" id="log"></div>
+          </section>
+        </aside>
+
+        <!-- ----------- BOARD ----------- -->
+        <section class="board-wrap">
+          <div class="board-frame">
+            <canvas id="board" width="760" height="760" aria-label="Snake and Ladders board"></canvas>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ===================== WINNER POPUP ===================== -->
+    <div class="winner-overlay" id="winnerOverlay">
+      <canvas class="confetti" id="confetti"></canvas>
+      <div class="winner-card">
+        <div class="winner-crown">&#128081;</div>
+        <h2 class="winner-title" id="winnerTitle">Player 1 Wins!</h2>
+        <p class="winner-sub" id="winnerSub">Reached tile 100 and claimed the throne.</p>
+        <button class="btn btn-primary" id="playAgainBtn">Play Again</button>
+      </div>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+  </body>
 </html>
